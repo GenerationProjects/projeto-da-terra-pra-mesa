@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DaTerraPraMesaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DaTerraPraMesaApplication.class, args);
+		SpringApplication.run(DaTerraPraMesaApplication.class, args); 
 	}
 
 }
