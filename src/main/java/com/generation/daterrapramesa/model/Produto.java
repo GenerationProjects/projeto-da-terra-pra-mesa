@@ -28,6 +28,7 @@ public class Produto {
 	@Size(min = 10, max = 255, message = "Este campo deve conter no mínimo 10 caracteres e no máximo 255 caracteres")
 	private String descricao;
 	
+	
 	@Positive(message = "Campo não pode ter valor negativo")
 	private Integer quantidade;
 
@@ -70,4 +71,7 @@ public class Produto {
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
+	
+	
+
 }
