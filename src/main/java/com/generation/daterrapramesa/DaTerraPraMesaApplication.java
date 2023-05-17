@@ -9,6 +9,5 @@ public class DaTerraPraMesaApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(DaTerraPraMesaApplication.class, args);
-		
 	}
 }
