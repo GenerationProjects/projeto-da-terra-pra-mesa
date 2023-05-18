@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
@@ -21,16 +22,16 @@ public class Produto {
 	@Size(min = 3, max = 100, message = "Este campo deve conter no mínimo 3 caracteres e no máximo 100 caracteres")
 	private String nome;
 	
-	@NotBlank(message = "Campo obrigatório")
 	@Positive(message = "Campo não pode ter valor negativo")
+	@NotNull(message = "Campo obrigatório")
 	private Double preco;
 	
 	@NotBlank(message = "Campo obrigatório")
 	@Size(min = 10, max = 255, message = "Este campo deve conter no mínimo 10 caracteres e no máximo 255 caracteres")
 	private String descricao;
 	
-	@NotBlank(message = "Campo obrigatório")
 	@Positive(message = "Campo não pode ter valor negativo")
+	@NotNull(message = "Campo obrigatório")
 	private Integer quantidade;
 
 	public Long getId() {
