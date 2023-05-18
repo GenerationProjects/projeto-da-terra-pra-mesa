@@ -1,9 +1,12 @@
 package com.generation.daterrapramesa.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -13,6 +16,7 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "tb_produto")
 public class Produto {
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +37,13 @@ public class Produto {
 	@Positive(message = "Campo não pode ter valor negativo")
 	@NotNull(message = "Campo obrigatório")
 	private Integer quantidade;
-
+	
+	private String imagem;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("produto")
+	private Categoria categoria;
+	
 	public Long getId() {
 		return id;
 	}
@@ -73,6 +83,15 @@ public class Produto {
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+	
 	
 	
 
