@@ -1,6 +1,7 @@
 # Da Terra Pra Mesa
 
-Projeto criado para atender uma ODS à fome zero e agricultura sustentável, tem como objetivo ajudar pequenos agricultores e com a renda de contribuições ajudando a combater a fome na sociedade.
+Projeto integrado para atender a ODS nº 2 "Fome zero e agricultura sustentável".\
+Tem como objetivo atingir um público de pequenos produtores agricultores, ajudá-los a gerar renda ao mesmo tempo que conseguimos repassar renda para ONG´s que cuidam de pessoas vulneráveis e ajudam a combater a fome da sociedade.
 
 ## Backend
   - Java 17
