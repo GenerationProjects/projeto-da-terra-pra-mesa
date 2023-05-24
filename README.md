@@ -23,13 +23,13 @@ Projeto criado para atender uma ODS à fome zero e agricultura sustentável, tem
 Pré-requisitos: Java 17.
 
 ```bash
- #clone repository.
+ #clonar repositório.
  git clone https:https://github.com/GenerationProjects/projeto-da-terra-pra-mesa/
  
- #enter in folder backend.
+ #entrar na pasta backend.
  cd backend
  
- #execute the project.
+ #executar o projeto.
  ./mvnw spring-boot:run
 ```
 ## Frontend Web
@@ -37,13 +37,13 @@ Pré-requisitos: Java 17.
 Pré-requisitos: Node.
 
 ```bash
-#clone repository.
+#clonar o repositorio.
 git clone 
 
-#enter in folder frontend.
+#Entrar na pasta frontend.
  cd frontend
 
-#install depêndencia.
+#instalar depêndencias.
 yarn install
 
 #executar o projeto.
