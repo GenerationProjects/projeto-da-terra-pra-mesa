@@ -24,7 +24,7 @@ Pré-requisitos: Java 17.
 
 ```bash
  #clonar repositório.
- git clone https:https://github.com/GenerationProjects/projeto-da-terra-pra-mesa/
+ git clone https://github.com/GenerationProjects/projeto-da-terra-pra-mesa/
  
  #entrar na pasta backend.
  cd backend
