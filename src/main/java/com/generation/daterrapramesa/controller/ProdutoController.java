@@ -29,45 +29,45 @@ import jakarta.validation.Valid;
 public class ProdutoController {
 	
 	@Autowired
-	private ProdutoRepository repository;
+	private ProdutoRepository produtoRepository;
 	
 	@GetMapping
 	public ResponseEntity<List<Produto>> listarTodos () {
-		return ResponseEntity.ok(repository.findAll());
+		return ResponseEntity.ok(produtoRepository.findAll());
 	} 
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Produto> getById(@PathVariable Long id) {
-		return repository.findById(id).map(res -> ResponseEntity.ok(res))
+		return produtoRepository.findById(id).map(res -> ResponseEntity.ok(res))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 
 	@GetMapping("/nomes/{nome}")
 	public ResponseEntity<List<Produto>> getByNome(@PathVariable String nome) {
-		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
+		return ResponseEntity.ok(produtoRepository.findAllByNomeContainingIgnoreCase(nome));
 	}
 
 	@PostMapping
-	public ResponseEntity<Produto> post(@Valid @RequestBody Produto Produto) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(Produto));
+	public ResponseEntity<Produto> post(@Valid @RequestBody Produto produto) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));
 	}
 
 	@PutMapping
-	public ResponseEntity<Produto> put(@Valid @RequestBody Produto Produto) {
-		return repository.findById(Produto.getId())
-				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(repository.save(Produto)))
+	public ResponseEntity<Produto> put(@Valid @RequestBody Produto produto) {
+		return produtoRepository.findById(produto.getId())
+				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(produtoRepository.save(produto)))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable Long id) {
-		Optional<Produto> produto = repository.findById(id);
+		Optional<Produto> produto = produtoRepository.findById(id);
 
 		if (produto.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
-		repository.deleteById(id);
+		produtoRepository.deleteById(id);
 	}
 }
 
