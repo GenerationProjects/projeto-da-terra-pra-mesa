@@ -29,39 +29,44 @@ import jakarta.validation.Valid;
 public class CategoriaController {
 	
 	@Autowired
-	private CategoriaRepository repository;
+	private CategoriaRepository categoriaRepository;
 	
 	@GetMapping
 	public ResponseEntity<List<Categoria>> listarTodos (){
-		return ResponseEntity.ok(repository.findAll());
+		return ResponseEntity.ok(categoriaRepository.findAll());
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Categoria> getById (@PathVariable Long id){
-		return repository.findById(id).map(res -> ResponseEntity.ok(res))
+		return categoriaRepository.findById(id).map(res -> ResponseEntity.ok(res))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	}
+	
+	@GetMapping("/descricao/{descricao}")
+	public ResponseEntity<List<Categoria>> findByDescricao(@PathVariable String descricao){
+		return ResponseEntity.ok(categoriaRepository.findAllByDescricaoContainingIgnoreCase(descricao));
 	}
 	
 	@PostMapping
 	public ResponseEntity<Categoria> post(@Valid @RequestBody Categoria Categoria){
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(Categoria));
+		return ResponseEntity.status(HttpStatus.CREATED).body(categoriaRepository.save(Categoria));
 	}
 	
 	@PutMapping
 	public ResponseEntity<Categoria> put(@Valid @RequestBody Categoria Categoria){
-		return repository.findById(Categoria.getId())
-				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(repository.save(Categoria)))
+		return categoriaRepository.findById(Categoria.getId())
+				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(categoriaRepository.save(Categoria)))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable Long id) {
-		Optional <Categoria> categoria = repository.findById(id);
+		Optional <Categoria> categoria = categoriaRepository.findById(id);
 		
 		if (categoria.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
-		repository.deleteById(id);
+		categoriaRepository.deleteById(id);
 	}
 }
