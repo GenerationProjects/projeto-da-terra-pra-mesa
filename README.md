@@ -1,4 +1,4 @@
-# projeto-da-terra-pra-mesa
+# Da Terra Pra Mesa
 
 Projeto criado para atender uma ODS à fome zero e agricultura sustentável, tem como objetivo ajudar pequenos agricultores e com a renda de contribuições ajudando a combater a fome na sociedade.
 
