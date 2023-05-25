@@ -1,12 +1,11 @@
 package com.generation.daterrapramesa.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_categoria")
@@ -23,6 +22,10 @@ public class Categoria {
 	@NotBlank(message = "Campo obrigatório")
 	@Size(min = 10, max = 255, message = "Este campo deve conter no mínimo 10 caracteres e no máximo 255 caracteres")
 	private String descricao;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria",  cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("categoria")
+	private List<Produto> produtos;
 
 	public Long getId() {
 		return id;
@@ -49,3 +52,4 @@ public class Categoria {
 	}
 	
 }
+
