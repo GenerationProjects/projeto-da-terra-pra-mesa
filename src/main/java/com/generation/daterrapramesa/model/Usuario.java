@@ -1,13 +1,11 @@
 package com.generation.daterrapramesa.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_usuario")
@@ -30,6 +28,10 @@ public class Usuario {
 	private String senha;
 
 	private String foto;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario",  cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("usuario")
+	private List<Produto> produtos;
 
 	public Long getId() {
 		return id;
@@ -71,4 +73,7 @@ public class Usuario {
 		this.foto = foto;
 	}
 
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
 }
