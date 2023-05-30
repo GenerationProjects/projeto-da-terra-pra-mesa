@@ -2,7 +2,9 @@ package com.generation.daterrapramesa.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.List;
@@ -19,8 +21,8 @@ public class Usuario {
 	@Size(min = 3, max = 100, message = "Este campo deve conter no mínimo 3 caracteres e no máximo 100 caracteres. .")
 	private String nome;
 
-	@NotBlank
-	@Column(unique = true)
+	@NotNull(message = "O atributo Usuario é obrigatório")
+	@Email(message = "O atributo usuario vai receber um e-mail válido")
 	private String email;
 
 	@Size(min = 3, max = 100, message = "Este campo deve conter no mínimo 3 caracteres e no máximo 100 caracteres. .")
