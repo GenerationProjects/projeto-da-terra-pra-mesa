@@ -29,7 +29,7 @@ public class UsuarioService {
 	private AuthenticationManager authenticationManager;
 	
 	public Optional<Usuario> cadastrarUsuario(Usuario usuario){
-		if(usuarioRepository.findByUsuario(usuario.getEmail()).isPresent()) 
+		if(usuarioRepository.findByEmail(usuario.getEmail()).isPresent()) 
 			return Optional.empty();
 			
 		usuario.setSenha(criptografarSenha(usuario.getSenha()));
@@ -40,10 +40,10 @@ public class UsuarioService {
 	
 	public Optional<Usuario> atualizarUsuario(Usuario usuario){
 		if(usuarioRepository.findById(usuario.getId()).isPresent()) {
-			Optional<Usuario> buscaUsuario = usuarioRepository.findByUsuario(usuario.getEmail());
+			Optional<Usuario> buscaUsuario = usuarioRepository.findByEmail(usuario.getEmail());
 			
 			if((buscaUsuario.isPresent()) && (buscaUsuario.get().getId() != usuario.getId())) 
-				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuáro já");
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuáro já exisite");
 				
 			usuario.setSenha(criptografarSenha(usuario.getSenha()));
 				
@@ -58,7 +58,7 @@ public class UsuarioService {
 		Authentication authentication = authenticationManager.authenticate(credenciais);
 		
 		if(authentication.isAuthenticated()) {
-			Optional<Usuario> usuario = usuarioRepository.findByUsuario(usuarioLogin.get().getEmail());
+			Optional<Usuario> usuario = usuarioRepository.findByEmail(usuarioLogin.get().getEmail());
 			
 			if(usuario.isPresent()) {
 				usuarioLogin.get().setId(usuario.get().getId());
