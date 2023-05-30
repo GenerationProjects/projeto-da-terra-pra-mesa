@@ -25,6 +25,7 @@ public class Produto {
 	@Size(min = 3, max = 100, message = "Este campo deve conter no mínimo 3 caracteres e no máximo 100 caracteres")
 	private String nome;
 
+
 	@Positive(message = "Campo não pode ter valor negativo")
 	@NotNull(message = "Campo obrigatório")
 	private Double preco;
@@ -32,6 +33,7 @@ public class Produto {
 	@NotBlank(message = "Campo obrigatório")
 	@Size(min = 10, max = 255, message = "Este campo deve conter no mínimo 10 caracteres e no máximo 255 caracteres")
 	private String descricao;
+
 
 	@Positive(message = "Campo não pode ter valor negativo")
 	@NotNull(message = "Campo obrigatório")
