@@ -31,9 +31,21 @@ public class Usuario {
 
 	private String foto;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario",  cascade = CascadeType.REMOVE)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Produto> produtos;
+	
+	public Usuario() {
+	
+	}
+
+	public Usuario(Long id, String nome, String email, String senha, String foto) {
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.foto = foto;
+	}
 
 	public Long getId() {
 		return id;
