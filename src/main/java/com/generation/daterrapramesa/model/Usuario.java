@@ -25,7 +25,7 @@ public class Usuario {
 	@Email(message = "O atributo usuario vai receber um e-mail válido")
 	private String email;
 
-	@Size(min = 3, max = 100, message = "Este campo deve conter no mínimo 3 caracteres e no máximo 100 caracteres. .")
+	@Size(min = 8, max = 100, message = "Este campo deve conter no mínimo 3 caracteres e no máximo 100 caracteres. .")
 	@NotBlank(message = "Campo obrigatório.")
 	private String senha;
 
