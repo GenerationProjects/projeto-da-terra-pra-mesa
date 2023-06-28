@@ -1,5 +1,6 @@
 package com.generation.daterrapramesa.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -87,6 +88,7 @@ public class Usuario {
 		this.foto = foto;
 	}
 
+	@JsonIgnore
 	public List<Produto> getProdutos() {
 		return produtos;
 	}
