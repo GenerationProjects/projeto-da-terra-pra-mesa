@@ -1,6 +1,5 @@
 package com.generation.daterrapramesa.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -42,7 +41,6 @@ public class Produto {
 
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
-	@JsonIgnore
 	private Usuario usuario;
 
 	public Long getId() {
