@@ -1,13 +1,8 @@
 package com.generation.daterrapramesa.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -47,6 +42,7 @@ public class Produto {
 
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
+	@JsonIgnore
 	private Usuario usuario;
 
 	public Long getId() {
@@ -104,6 +100,7 @@ public class Produto {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+
 
 	public Usuario getUsuario() {
 		return usuario;

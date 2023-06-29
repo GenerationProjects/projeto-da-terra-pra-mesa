@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/view-produtos")
+@RequestMapping("/view-produtos")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ViewProdutoController {
 
